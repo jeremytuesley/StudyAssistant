@@ -1,15 +1,19 @@
 # CREATING CATEGORIES QUESTIONS ANSWERS
 require_relative '../Methods/NewContent'
 
-puts "Would you like to create a new: 'category' or 'question'?"
-puts "To go back to the menu, type: 'back to menu'"
-case gets.chomp.downcase
-when 'category'
-    createCategory
-
-when 'question'
-  createQuestion
-
-else
-  puts "Invalid input, please try again"
+def createContent
+  menu = false
+  until menu
+    puts "Would you like to create a new: 'category' or 'question'?"
+    case gets.chomp.downcase
+    when 'category'
+      createCategory
+      # when 'question'
+      #   createQuestion
+    when 'back'
+      menu = true
+    else
+      puts 'Invalid input, please try again'
+    end
+  end
 end

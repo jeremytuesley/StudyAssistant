@@ -1,23 +1,21 @@
 require_relative './MenuOptions/play'
 require_relative './MenuOptions/create'
 quit = false
-menu = true
+
+puts 'Welcome! My name is Study Assitant.'
+puts "At any time, type 'back' to go back"
+
 until quit
-  if menu
-    puts "What would you like to do? options: 'play' 'instructions' 'create more questions' 'manage questions' 'quit'"
-    menu = false
-  end
+  puts "What would you like to do? options: 'play' 'instructions' 'create more questions' 'manage questions' 'quit'"
   case (gets.chomp.downcase)
   when 'play'
     puts 'do this play'
   when 'create more questions'
-    puts 'do this create'
+    createContent
   when 'manage questions'
     puts 'do this manage'
-  when 'back to menu'
-    menu = true
   when 'quit'
-    puts 'Thanks! Goodbye :)'
+    puts 'Thanks for playing! Goodbye :)'
     quit = true
   else
     puts 'Input not recognized, please try again'
