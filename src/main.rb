@@ -1,3 +1,5 @@
+require_relative './MenuOptions/play'
+require_relative './MenuOptions/create'
 quit = false
 menu = true
 until quit
