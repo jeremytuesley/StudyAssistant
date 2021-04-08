@@ -1,5 +1,5 @@
 require 'json'
-FilePath = '../../docs/questions.json'
+FilePath = '../docs/questions.json'
 
 def createCategory # Function to create a category if chosen from the menu
   categoryFile = File.read(FilePath)
@@ -31,9 +31,7 @@ def createQuestion
   until back
     categoryFile = File.read(FilePath)
     data_array = JSON.parse(categoryFile)
-
-    # Checking if category exists so question can be assigned to it
-    puts 'Which category does your question fall under?'
+    puts 'Which category does your question fall under?' # Checking if category exists so question can be assigned to it
     data_array.each { |item| print "#{item['category']}, " }
     puts ''
     cata_input = gets.chomp
@@ -78,7 +76,3 @@ def createQuestion
     end
   end
 end
-
-puts 'reached here1'
-createQuestion
-puts 'reached here2'

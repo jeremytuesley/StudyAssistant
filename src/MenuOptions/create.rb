@@ -8,8 +8,8 @@ def createContent
     case gets.chomp.downcase
     when 'category'
       createCategory
-      # when 'question'
-      #   createQuestion
+    when 'question'
+      createQuestion
     when 'back'
       menu = true
     else
