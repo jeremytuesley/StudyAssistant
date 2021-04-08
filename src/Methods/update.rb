@@ -1,6 +1,6 @@
 # Updating Page
 require 'json'
-FilePath = '../../docs/questions.json'
+FilePath = '../docs/questions.json'
 
 def manageCategory # Function to modify a category
   categoryFile = File.read(FilePath)

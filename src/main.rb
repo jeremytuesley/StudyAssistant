@@ -1,6 +1,10 @@
 require_relative './MenuOptions/play'
 require_relative './MenuOptions/create'
 require_relative './MenuOptions/instructions'
+require_relative './MenuOptions/manage'
+require 'colorize'
+require 'tty-prompt'
+
 quit = false
 puts ''
 puts 'Welcome! My name is Study Assitant.'
@@ -17,7 +21,7 @@ until quit
   when 'create more questions'
     createContent
   when 'manage questions'
-    puts 'do this manage'
+    manageContent
   when 'quit'
     puts 'Thanks for playing! Goodbye :)'
     quit = true
