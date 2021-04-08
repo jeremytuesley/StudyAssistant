@@ -26,7 +26,7 @@ def createCategory # Function to create a category if chosen from the menu
   end
 end
 
-def createQuestion
+def createQuestion # Function to create question and answers if chosen from the menu
   back = false
   until back
     categoryFile = File.read(FilePath)
