@@ -36,8 +36,6 @@ def createQuestion
     puts ''
     cata_input = gets.chomp
     data_array.each do |item|
-      puts 'data_array start'
-      puts cata_input
       back = true if cata_input == 'back'
       if !back
         if item['category'].downcase == cata_input.downcase
