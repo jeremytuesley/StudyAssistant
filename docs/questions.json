@@ -1,1 +1,5 @@
-[{"category":"fish","content":[]},{"category":"apple","content":[]}]
+[
+  { "category": "fish", "content": [] },
+  { "category": "apple", "content": [] }
+
+]
