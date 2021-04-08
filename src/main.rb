@@ -1,33 +1,37 @@
 require_relative './MenuOptions/play'
-require_relative './MenuOptions/create'
-require_relative './MenuOptions/instructions'
 require_relative './MenuOptions/manage'
+require_relative './MenuOptions/instructions'
 require 'colorize'
 require 'tty-prompt'
+prompt = TTY::Prompt.new
 
 quit = false
 puts ''
-puts 'Welcome! My name is Study Assitant.'
-puts "At any time within the menu options, type 'back' to go back up the previous menu"
+puts 'Welcome! My name is Study Assitant!'.green
+puts 'If this is your first time playing, please read the instructions!'.green
+puts "At any time within the menu options, type 'back' to go back up the previous menu."
+       .green
 puts ''
 
 until quit
-  puts "What would you like to do? options: 'play' 'instructions' 'create more questions' 'manage questions' 'quit'"
-  case (gets.chomp.downcase)
-  when 'play'
+  menu_choices = [
+    'Play',
+    'Instructions',
+    'Create/ Manage questions',
+    'Quit',
+  ]
+  choice = prompt.select('What would you like to do?', menu_choices)
+  case (choice)
+  when 'Play'
     puts 'do this play'
-  when 'instructions'
+  when 'Instructions'
     instructions
-  when 'create more questions'
+  when 'Create more questions'
     createContent
-  when 'manage questions'
+  when 'Manage questions'
     manageContent
-  when 'quit'
-    puts 'Thanks for playing! Goodbye :)'
+  when 'Quit'
+    puts 'Thanks for playing! Goodbye :)'.cyan
     quit = true
-  when 'back'
-    puts "You're already in the menu! If you wanted to quit, type 'quit'"
-  else
-    puts 'Input not recognized, please try again'
   end
 end

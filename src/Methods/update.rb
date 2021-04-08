@@ -30,4 +30,3 @@ def manageCategory # Function to modify a category
     end
   end
 end
-manageCategory
