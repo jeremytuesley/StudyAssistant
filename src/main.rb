@@ -14,13 +14,13 @@ puts "At any time within the menu options, type 'back' to go back up the previou
 puts ''
 
 until quit
-  menu_choices = [
+  menuChoices = [
     'Play',
     'Instructions',
     'Create/ Manage Questions',
     'Quit',
   ]
-  choice = prompt.select('What would you like to do?', menu_choices)
+  choice = prompt.select('What would you like to do?', menuChoices)
   case (choice)
   when 'Play'
     puts 'do this play'

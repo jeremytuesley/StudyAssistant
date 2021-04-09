@@ -22,27 +22,26 @@ def createQuestion
   until back
     puts 'Which category does your question fall under?'.cyan
     displayCategory
-    puts ''
 
-    cata_input = gets.chomp
-    category = findCategory(cata_input)
-    if cata_input.downcase == 'back'
+    cataInput = gets.chomp
+    category = findCategory(cataInput)
+    if cataInput.downcase == 'back'
       back = true
     elsif category
       # if category already exists
       puts 'Please enter your question:'.cyan
-      ques_input = gets.chomp
-      if ques_input.downcase == 'back'
+      quesInput = gets.chomp
+      if quesInput.downcase == 'back'
         back = true
       else
         # checking if question already exists
-        if findQuestion(category['content'], ques_input)
+        if findQuestion(category['content'], quesInput)
           puts 'That question already exists'.red
         else
           # Create question
           puts 'Please enter the answer:'.cyan
-          ans_input = gets.chomp.downcase
-          category['content'] << { question: ques_input, answer: ans_input }
+          ansInput = gets.chomp.downcase
+          category['content'] << { question: quesInput, answer: ansInput }
           updateQuestions(category)
           puts 'Successfully added new question'.green
         end

@@ -1,6 +1,10 @@
 require 'json'
 FilePath = '../docs/questions.json'
 
+# Check if category exists
+# params: category name (string)
+# returns: if found category, returns category item (hash) otherwise false
+#          e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
 def findCategory(name)
   data_array = JSON.parse(File.read(FilePath))
   foundItem = false
@@ -13,6 +17,12 @@ def findCategory(name)
   return foundItem
 end
 
+# Check if question exists
+# params: 1. questionSet (array of questions and answers),  
+#         e.g. [{"question":"how many fish","answer":"2"}, {"question":"how many dogs","answer":"2"}]
+#         2. question (string)
+# returns: if found question, returns question item (hash) otherwise false
+#          e.g. {"question":"how many fish","answer":"2"}
 def findQuestion(questionSet, question)
   foundItem = false
   questionSet.each do |item|
@@ -24,23 +34,32 @@ def findQuestion(questionSet, question)
   return foundItem
 end
 
+# Save Category item into file
+# params: 1. Category item (hash),  
+#         e.g. {"category":"fish","content":[]}
 def saveNewCategory(hash)
   data_array = JSON.parse(File.read(FilePath))
   data_array << hash
   File.open(FilePath, 'w') { |f| f.write(data_array.to_json) }
 end
 
-def updateCategory(oldHash, newHash)
+# Update Category Name in the file
+# params: 1. old Category item (hash), 2. new Category item (hash)
+#         e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
+def updateCategory(oldName, newName)
   data_array = JSON.parse(File.read(FilePath))
   data_array.each_with_index do |item, index|
-    if item['category'] == oldHash['category']
-      data_array[index] = newHash
+    if item['category'] == oldName
+      item['category'] = newName
       break
     end
   end
   File.open(FilePath, 'w') { |f| f.write(data_array.to_json) }
 end
 
+# Delete Category item in the file
+# params: 1.  Category item (hash)
+#         e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
 def deleteCategory(hash)
   data_array = JSON.parse(File.read(FilePath))
   data_array.each_with_index do |item, index|
@@ -52,6 +71,10 @@ def deleteCategory(hash)
   File.open(FilePath, 'w') { |f| f.write(data_array.to_json) }
 end
 
+# update Question set in the file
+# It found the category with the same name and update it's content
+# params: 1.  Category item (hash)
+#         e.g. {"category":"fish","content":[]}
 def updateQuestions(hash)
   data_array = JSON.parse(File.read(FilePath))
   data_array.each_with_index do |item, index|
@@ -63,7 +86,16 @@ def updateQuestions(hash)
   File.open(FilePath, 'w') { |f| f.write(data_array.to_json) }
 end
 
+# Display all categorys in a line
 def displayCategory
   data_array = JSON.parse(File.read(FilePath))
   data_array.each { |item| print "#{item['category']}, " }
+  puts ''
+end
+
+# display each question within a category
+# params: 1.  Category item (hash)
+#         e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
+def displayQuestion(hash)
+  hash["content"].each { |item| puts "#{item['question']}, " }
 end
