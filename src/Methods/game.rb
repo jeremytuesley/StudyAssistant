@@ -16,5 +16,11 @@ def randomPlay
 end
 
 def mayhemPlay 
-    puts 'mayhemPlay'
+  dataArray = JSON.parse(File.read(FilePath))
+  allQuestinos = []
+  dataArray.each do |item|
+    allQuestinos.concat item['content']
+  end
+  result = sampleQuestion(allQuestinos)
+  report(result) if result 
 end
