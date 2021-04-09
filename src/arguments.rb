@@ -19,7 +19,21 @@ if ARGV.include? "--help" # If user includes --help, it will only display instru
     puts 'Either by randomly sampling from all categories, or from a specific one'.yellow
     puts ''
     puts 'Good luck!'.yellow
-    exit
+    puts ''
+    puts 'Installation was successful!'.green
+    puts "Would you like to launch the game? y/n".cyan
+    chosen = false
+    until chosen
+    case STDIN.gets.chomp.downcase
+    when 'y'
+        chosen = true
+    when 'n'
+          puts 'To play, launch the game from the new executable file.'.yellow
+          exit
+    else
+        puts "Input not recognized, try just type 'y' or 'n'".red
+    end
+end
 end
 
 if ARGV.include? "--play" #If user includes --play, it will take them straight to play instead of main menu
