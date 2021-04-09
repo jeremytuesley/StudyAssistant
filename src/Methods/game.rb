@@ -1,3 +1,4 @@
+require 'tty-spinner'
 require_relative '../Methods/utils'
 FilePath = '../docs/questions.json'
 
@@ -12,7 +13,20 @@ def categoryPlay
 end
 
 def randomPlay 
-    puts 'randomPlay'
+  # Sample a random category
+  dataArray = JSON.parse(File.read(FilePath))
+  category = dataArray.sample
+
+  # Ainmation UI for random category
+  puts 'Randonly pick a catagory for you'
+  spinner = TTY::Spinner.new("Your random category is ... [:spinner]", format: :arrow_pulse)
+  spinner.auto_spin 
+  sleep(2)
+  spinner.stop("#{category['category']}!")
+
+  # Start game
+  result = sampleQuestion(category["content"])
+  report(result) if result 
 end
 
 def mayhemPlay 
