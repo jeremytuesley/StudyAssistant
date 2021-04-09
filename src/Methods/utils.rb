@@ -3,8 +3,8 @@ require 'tty-prompt'
 FilePath = '../docs/questions.json'
 
 # Check if category exists
-# params: category name (string)
-# returns: if found category, returns category item (hash) otherwise false
+# @params: [String] category name 
+# @returns: [Hash] if found category, returns category item otherwise false
 #          e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
 def findCategory(name)
   dataArray = JSON.parse(File.read(FilePath))
@@ -20,11 +20,11 @@ end
 
 # Check if question exists
 
-# params: 1. questionSet (array of questions and answers),
-#         e.g. [{"question":"how many fish","answer":"2"}, {"question":"how many dogs","answer":"2"}]
-#         2. question (string)
-# returns: if found question, returns question item (hash) otherwise false
-#          e.g. {"question":"how many fish","answer":"2"}
+# @params: 
+# 1. [Array] questionSet , e.g. [{"question":"how many fish","answer":"2"}, {"question":"how many dogs","answer":"2"}]
+# 2. [String] question 
+# @returns: [Hash] if found question, returns question item otherwise false
+# e.g. {"question":"how many fish","answer":"2"}
 def findQuestion(questionSet, question)
   foundItem = false
   questionSet.each do |item|
@@ -37,9 +37,8 @@ def findQuestion(questionSet, question)
 end
 
 # Save Category item into file
-
-# params: 1. Category item (hash),
-#         e.g. {"category":"fish","content":[]}
+# @params: [Hash] Category item,
+# e.g. {"category":"fish","content":[]}
 def saveNewCategory(hash)
   dataArray = JSON.parse(File.read(FilePath))
   dataArray << hash
@@ -47,8 +46,10 @@ def saveNewCategory(hash)
 end
 
 # Update Category Name in the file
-# params: 1. old Category item (hash), 2. new Category item (hash)
-#         e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
+# @params: 
+# 1. [hash] old Category item 
+# 2. [hash] new Category item
+# e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
 def updateCategory(oldName, newName)
   dataArray = JSON.parse(File.read(FilePath))
   dataArray.each_with_index do |item, index|
@@ -61,7 +62,7 @@ def updateCategory(oldName, newName)
 end
 
 # Delete Category item in the file
-# params: 1.  Category name (string)
+# @params: [String] Category name
 def deleteCategory(name)
   dataArray = JSON.parse(File.read(FilePath))
   catergoryItem = findCategory(name)
@@ -70,8 +71,9 @@ def deleteCategory(name)
 end
 
 # Create new Question set in a category
-# params: 1.  category name (string)
-#         2. question/answer item (hash) e.g. {"question":"how many fish","answer":"2"}
+# @params: 
+# 1. [String] category name 
+# 2. [Hash]  question/answer item, e.g. {"question":"how many fish","answer":"2"}
 def createQuestions(categoryName, hash)
   dataArray = JSON.parse(File.read(FilePath))
   dataArray.each do |item|
@@ -84,9 +86,9 @@ def createQuestions(categoryName, hash)
 end
 
 # Delete Question set in a category
-# It found the category with the same name and update it's content
-# params: 1.  category name (string)
-#         2. question/answer item (hash) e.g. {"question":"how many fish","answer":"2"}
+# @params: 
+# 1. [String] category name
+# 2. [Hash] question/answer item ,e.g. {"question":"how many fish","answer":"2"}
 def deleteQuestions(categoryName, hash)
   dataArray = JSON.parse(File.read(FilePath))
   dataArray.each do |item|
@@ -95,7 +97,7 @@ def deleteQuestions(categoryName, hash)
   File.open(FilePath, 'w') { |f| f.write(dataArray.to_json) }
 end
 
-# Display all categorys in a line
+# Display all categorys as a menu option
 def displayCategory
   prompt = TTY::Prompt.new
   dataArray = JSON.parse(File.read(FilePath))
@@ -105,9 +107,9 @@ def displayCategory
   return prompt.select('', menuOptions)
 end
 
-# display each question within a category
-# params: 1.  Category item (hash)
-#         e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
+# display each question within a category as a menu option
+# @params: [Hash] Category item
+# e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
 def displayQuestion(hash)
   prompt = TTY::Prompt.new
   menuOptions = []
