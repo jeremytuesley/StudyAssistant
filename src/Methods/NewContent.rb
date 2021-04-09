@@ -22,14 +22,10 @@ def createQuestion
   back = false
   until back
     puts 'Which category does your question fall under?'.cyan
-    displayCategory
-
-    cataInput = gets.chomp
-    category = findCategory(cataInput)
-    if cataInput.downcase == 'back'
+    category = displayCategory
+    if category == 'Back to Menu'
       back = true
-    elsif category
-      # if category already exists
+    else 
       puts 'Please enter your question:'.cyan
       quesInput = gets.chomp
       if quesInput.downcase == 'back'
@@ -42,18 +38,9 @@ def createQuestion
           # Create question
           puts 'Please enter the answer:'.cyan
           ansInput = gets.chomp.downcase
-          createQuestions(cataInput, { question: quesInput, answer: ansInput })
+          createQuestions(category, { question: quesInput, answer: ansInput })
           puts 'Successfully added new question'.green
         end
-      end
-    else
-      # if category doesn't exist
-      puts "That category doesn't exist, try again? y/n".red
-      input = gets.chomp.downcase
-      if input == 'y'
-        createQuestion
-      else
-        break
       end
     end
   end
