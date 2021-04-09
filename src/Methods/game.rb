@@ -2,6 +2,7 @@ require 'tty-spinner'
 require_relative '../Methods/utils'
 
 def categoryPlay 
+
   puts 'Please choose a category'.cyan
   choice = displayCategory
   if choice != 'Back to Menu'
@@ -16,7 +17,7 @@ def randomPlay
   dataArray = JSON.parse(File.read(FilePath))
   category = dataArray.sample
 
-  # Ainmation UI for random category
+  # Animation UI for random category
   puts 'Randonly pick a catagory for you'
   spinner = TTY::Spinner.new("Your random category is ... [:spinner]", format: :arrow_pulse)
   spinner.auto_spin 

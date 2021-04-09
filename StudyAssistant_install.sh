@@ -8,7 +8,9 @@ bundle install
 touch StudyAssistant.sh
 chmod u+x StudyAssistant.sh
 echo "#!/bin/bash" >> StudyAssistant.sh
+echo "cd src" >> StudyAssistant.sh
 echo "ruby ./src/main.rb" >> StudyAssistant.sh
 echo "Launching Study Assistant..."
-ruby ./src/main.rb --help
+cd src
+ruby main.rb --help
 fi
