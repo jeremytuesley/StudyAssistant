@@ -1,4 +1,5 @@
 require 'tty-spinner'
+require 'colorize'
 require_relative '../Methods/utils'
 
 def categoryPlay 
@@ -18,9 +19,9 @@ def randomPlay
   category = dataArray.sample
 
   # Animation UI for random category
-  puts 'Randonly pick a catagory for you'
+  puts 'Randomly picking a category for you'.cyan
   spinner = TTY::Spinner.new("Your random category is ... [:spinner]", format: :arrow_pulse)
-  spinner.auto_spin 
+  spinner.auto_spin
   sleep(2)
   spinner.stop("#{category['category']}!")
 

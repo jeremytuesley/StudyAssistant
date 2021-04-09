@@ -126,17 +126,17 @@ def sampleQuestion(questionsSet)
   incorrect = 0
   while order <= totalQuestions
     question = questionsSet.sample
-    puts "Question #{order}/#{totalQuestions}: #{question["question"]}"
-    puts "Your answer is:"
+    puts "Question #{order}/#{totalQuestions}: #{question["question"]}".cyan
+    puts "Your answer is:".green
     answer = STDIN.gets.chomp.downcase
     if answer.downcase == 'back'
       return false
     elsif answer == question["answer"].downcase
-      puts "Correct!"
+      puts "Correct!".green
       correct += 1
     else 
-      puts "Incorrect! The correct answer is:"
-      puts question["answer"]
+      puts "Incorrect! The correct answer is:".red
+      puts "#{question["answer"]}".green
       incorrect += 1
     end
     order += 1
@@ -146,6 +146,15 @@ def sampleQuestion(questionsSet)
 end
 
 def report(result)
-  puts "You got #{result[:correct]}/#{result[:totalQuestions]} questions right!"
-  puts "Thanks for playing!"
+  correctResult = result[:correct]
+  totalResult = result[:totalQuestions]
+  sum = correctResult/totalResult.to_f * 100
+  puts "You got #{correctResult}/#{totalResult}, #{sum}% of questions right!".cyan
+  if sum >= 70
+    puts "Well done! You're pretty smart.".green
+  elsif sum < 70
+    puts "Better luck next time".red
+  end
+  puts ''
+  puts "Thanks for playing!".cyan
 end
