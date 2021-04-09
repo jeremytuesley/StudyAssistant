@@ -1,7 +1,13 @@
 [
   {
     "category": "Fish",
-    "content": [{ "question": "Is Kuma a fish?", "answer": "no" }]
+    "content": [
+      { "question": "Is Kuma a fish?", "answer": "no" },
+      { "question": "Is fish a Kuma?", "answer": "no" }
+    ]
   },
-  { "category": "Kuma", "content": [] }
+  {
+    "category": "Kuma",
+    "content": [{ "question": "Is Kuma Peema?", "answer": "yes" }]
+  }
 ]

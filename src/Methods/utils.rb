@@ -39,9 +39,9 @@ end
 # Save Category item into file
 # @params: [Hash] Category item,
 # e.g. {"category":"fish","content":[]}
-def saveNewCategory(hash)
+def saveNewCategory(categoryItem)
   dataArray = JSON.parse(File.read(FilePath))
-  dataArray << hash
+  dataArray << categoryItem
   File.open(FilePath, 'w') { |f| f.write(dataArray.to_json) }
 end
 
@@ -74,11 +74,11 @@ end
 # @params: 
 # 1. [String] category name 
 # 2. [Hash]  question/answer item, e.g. {"question":"how many fish","answer":"2"}
-def createQuestions(categoryName, hash)
+def createQuestions(categoryName, questionSet)
   dataArray = JSON.parse(File.read(FilePath))
   dataArray.each do |item|
     if item['category'] == categoryName
-      item['content'] << hash
+      item['content'] << questionSet
       break
     end
   end
@@ -89,10 +89,10 @@ end
 # @params: 
 # 1. [String] category name
 # 2. [Hash] question/answer item ,e.g. {"question":"how many fish","answer":"2"}
-def deleteQuestions(categoryName, hash)
+def deleteQuestions(categoryName, questionSet)
   dataArray = JSON.parse(File.read(FilePath))
   dataArray.each do |item|
-    item['content'].delete(hash) if item['category'] == categoryName
+    item['content'].delete(questionSet) if item['category'] == categoryName
   end
   File.open(FilePath, 'w') { |f| f.write(dataArray.to_json) }
 end
@@ -110,10 +110,42 @@ end
 # display each question within a category as a menu option
 # @params: [Hash] Category item
 # e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
-def displayQuestion(hash)
+def displayQuestion(categoryItem)
   prompt = TTY::Prompt.new
   menuOptions = []
-  hash['content'].each { |item| menuOptions << item['question'] }
+  categoryItem['content'].each { |item| menuOptions << item['question'] }
   menuOptions << 'back'
   return prompt.select('', menuOptions)
+end
+
+
+def sampleQuestion(questionsSet)
+  totalQuestions = questionsSet.length() 
+  order = 1
+  correct = 0
+  incorrect = 0
+  while order <= totalQuestions
+    question = questionsSet.sample
+    puts "Question #{order}/#{totalQuestions}: #{question["question"]}"
+    puts "Your answer is:"
+    answer = gets.chomp.downcase
+    if answer.downcase == 'back'
+      return false
+    elsif answer == question["answer"].downcase
+      puts "Correct!"
+      correct += 1
+    else 
+      puts "Incorrect! The correct answer is:"
+      puts question["answer"]
+      incorrect += 1
+    end
+    order += 1
+    questionsSet.delete(question)
+  end 
+  return {totalQuestions: totalQuestions, correct: correct, incorrect: incorrect}
+end
+
+def report(result)
+  puts "You got #{result[:correct]}/#{result[:totalQuestions]} questions right!"
+  puts "Thanks for playing!"
 end
