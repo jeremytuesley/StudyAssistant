@@ -10,14 +10,14 @@ puts ''
 puts 'Welcome! My name is Study Assitant!'.green
 puts 'If this is your first time playing, please read the instructions!'.green
 puts "At any time within the menu options, type 'back' to go back up the previous menu."
-       .green
+       .light_blue
 puts ''
 
 until quit
   menu_choices = [
     'Play',
     'Instructions',
-    'Create/ Manage questions',
+    'Create/ Manage Questions',
     'Quit',
   ]
   choice = prompt.select('What would you like to do?', menu_choices)
@@ -26,9 +26,7 @@ until quit
     puts 'do this play'
   when 'Instructions'
     instructions
-  when 'Create more questions'
-    createContent
-  when 'Manage questions'
+  when 'Create/ Manage Questions'
     manageContent
   when 'Quit'
     puts 'Thanks for playing! Goodbye :)'.cyan
