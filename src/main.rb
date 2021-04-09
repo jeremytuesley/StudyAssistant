@@ -1,6 +1,7 @@
 require_relative './MenuOptions/play'
 require_relative './MenuOptions/manage'
 require_relative './MenuOptions/instructions'
+require_relative './arguments'
 require 'colorize'
 require 'tty-prompt'
 require 'tty-font'
