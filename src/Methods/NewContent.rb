@@ -5,7 +5,7 @@ require 'colorize'
 # Function to create a category if chosen from the menu
 def createCategory
   puts 'Please enter your category name:'.cyan
-  input = gets.chomp
+  input = STDIN.gets.chomp
   if input.downcase != 'back'
     if findCategory(input)
       puts 'That category already exists'.red
@@ -27,7 +27,7 @@ def createQuestion
       back = true
     else 
       puts 'Please enter your question:'.cyan
-      quesInput = gets.chomp
+      quesInput = STDIN.gets.chomp
       if quesInput.downcase == 'back'
         back = true
       else
@@ -37,7 +37,7 @@ def createQuestion
         else
           # Create question
           puts 'Please enter the answer:'.cyan
-          ansInput = gets.chomp.downcase
+          ansInput = STDIN.gets.chomp.downcase
           createQuestions(category, { question: quesInput, answer: ansInput })
           puts 'Successfully added new question'.green
         end

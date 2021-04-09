@@ -16,7 +16,7 @@ def instructions
     puts 'Good luck!'.yellow
     puts "Want to go back to the menu? Type 'back'".cyan
     until menu
-    input = gets.chomp
+    input = STDIN.gets.chomp
     if input == 'back'
       menu = true
     else

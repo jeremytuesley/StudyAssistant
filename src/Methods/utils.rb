@@ -128,7 +128,7 @@ def sampleQuestion(questionsSet)
     question = questionsSet.sample
     puts "Question #{order}/#{totalQuestions}: #{question["question"]}"
     puts "Your answer is:"
-    answer = gets.chomp.downcase
+    answer = STDIN.gets.chomp.downcase
     if answer.downcase == 'back'
       return false
     elsif answer == question["answer"].downcase

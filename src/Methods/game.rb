@@ -1,6 +1,5 @@
 require 'tty-spinner'
 require_relative '../Methods/utils'
-FilePath = '../docs/questions.json'
 
 def categoryPlay 
   puts 'Please choose a category'.cyan

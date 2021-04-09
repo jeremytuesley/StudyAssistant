@@ -15,6 +15,8 @@ GEM
       tty-screen (~> 0.8)
       wisper (~> 2.0)
     tty-screen (0.8.1)
+    tty-spinner (0.9.3)
+      tty-cursor (~> 0.7)
     wisper (2.0.1)
 
 PLATFORMS
@@ -24,6 +26,7 @@ DEPENDENCIES
   colorize (~> 0.8.1)
   tty-font (~> 0.5.0)
   tty-prompt (~> 0.23.0)
+  tty-spinner (~> 0.9.3)
 
 BUNDLED WITH
    2.2.3

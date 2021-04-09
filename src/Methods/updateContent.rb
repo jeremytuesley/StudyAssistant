@@ -17,7 +17,7 @@ def manageCategory # Function to modify a category
     while !availableName
       puts "Please enter the desired updated name for this category, or type 'back'"
              .cyan
-      newCategoryName = gets.chomp
+      newCategoryName = STDIN.gets.chomp
       if newCategoryName.downcase == 'back'
         menu = true
         availableName = true
