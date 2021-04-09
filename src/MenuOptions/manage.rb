@@ -9,8 +9,9 @@ def manageContent
   menuChoices = [
     'Create a New Category',
     'Create a New Question',
-    'Manage Categories',
-    'Manage Questions',
+    'Change a Category Name',
+    'Delete a Question',
+    'Delete a Category',
     'Back to Main Menu',
   ]
   menu = false
@@ -21,10 +22,12 @@ def manageContent
       createCategory
     when 'Create a New Question'
       createQuestion
-    when 'Manage Categories'
+    when 'Change a Category Name'
       manageCategory
-    when 'Manage Questions'
+    when 'Delete a Question'
       manageQuestion
+    when 'Delete a Category'
+      removeCategory
     when 'Back to Main Menu'
       menu = true
     end

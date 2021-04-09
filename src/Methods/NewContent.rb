@@ -1,3 +1,4 @@
+# Creating new content page
 require_relative './utils'
 require 'colorize'
 
@@ -41,8 +42,7 @@ def createQuestion
           # Create question
           puts 'Please enter the answer:'.cyan
           ansInput = gets.chomp.downcase
-          category['content'] << { question: quesInput, answer: ansInput }
-          updateQuestions(category)
+          createQuestions(cataInput, { question: quesInput, answer: ansInput })
           puts 'Successfully added new question'.green
         end
       end

@@ -1,1 +1,7 @@
-[{"category":"fish","content":[{"question":"fishy","answer":"fish"},{"question":"fishyfishy","answer":"fishyy"},{"question":"Is Kuma a fish?","answer":"no"}]},{"category":"pie","content":[{"question":"What is good pie?","answer":"3.14"}]},{"category":"fishy","content":[]},{"category":"Kuma","content":[]}]
+[
+  {
+    "category": "Fish",
+    "content": [{ "question": "Is Kuma a fish?", "answer": "no" }]
+  },
+  { "category": "Kuma", "content": [] }
+]

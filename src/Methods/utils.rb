@@ -1,4 +1,5 @@
 require 'json'
+require 'tty-prompt'
 FilePath = '../docs/questions.json'
 
 # Check if category exists
@@ -18,7 +19,8 @@ def findCategory(name)
 end
 
 # Check if question exists
-# params: 1. questionSet (array of questions and answers),  
+
+# params: 1. questionSet (array of questions and answers),
 #         e.g. [{"question":"how many fish","answer":"2"}, {"question":"how many dogs","answer":"2"}]
 #         2. question (string)
 # returns: if found question, returns question item (hash) otherwise false
@@ -35,7 +37,8 @@ def findQuestion(questionSet, question)
 end
 
 # Save Category item into file
-# params: 1. Category item (hash),  
+
+# params: 1. Category item (hash),
 #         e.g. {"category":"fish","content":[]}
 def saveNewCategory(hash)
   data_array = JSON.parse(File.read(FilePath))
@@ -58,44 +61,57 @@ def updateCategory(oldName, newName)
 end
 
 # Delete Category item in the file
-# params: 1.  Category item (hash)
-#         e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
-def deleteCategory(hash)
+# params: 1.  Category name (string)
+def deleteCategory(name)
   data_array = JSON.parse(File.read(FilePath))
-  data_array.each_with_index do |item, index|
-    if item['category'] == hash['category']
-      data_array.delete_at(index)
+  catergoryItem = findCategory(name)
+  data_array.delete(catergoryItem)
+  File.open(FilePath, 'w') { |f| f.write(data_array.to_json) }
+end
+
+# Create new Question set in a category
+# params: 1.  category name (string)
+#         2. question/answer item (hash) e.g. {"question":"how many fish","answer":"2"}
+def createQuestions(categoryName, hash)
+  data_array = JSON.parse(File.read(FilePath))
+  data_array.each do |item|
+    if item['category'] == categoryName
+      item['content'] << hash
       break
     end
   end
   File.open(FilePath, 'w') { |f| f.write(data_array.to_json) }
 end
 
-# update Question set in the file
+# Delete Question set in a category
 # It found the category with the same name and update it's content
-# params: 1.  Category item (hash)
-#         e.g. {"category":"fish","content":[]}
-def updateQuestions(hash)
+# params: 1.  category name (string)
+#         2. question/answer item (hash) e.g. {"question":"how many fish","answer":"2"}
+def deleteQuestions(categoryName, hash)
   data_array = JSON.parse(File.read(FilePath))
-  data_array.each_with_index do |item, index|
-    if item['category'] == hash['category']
-      data_array[index] = hash
-      break
-    end
+  data_array.each do |item|
+    item['content'].delete(hash) if item['category'] == categoryName
   end
   File.open(FilePath, 'w') { |f| f.write(data_array.to_json) }
 end
 
 # Display all categorys in a line
 def displayCategory
+  prompt = TTY::Prompt.new
   data_array = JSON.parse(File.read(FilePath))
-  data_array.each { |item| print "#{item['category']}, " }
-  puts ''
+  menuOptions = []
+  data_array.each { |item| menuOptions << item['category'] }
+  menuOptions << 'Back to Menu'
+  return prompt.select('', menuOptions)
 end
 
 # display each question within a category
 # params: 1.  Category item (hash)
 #         e.g. {"category":"fish","content":[{"question":"how many fish","answer":"2"}]}
 def displayQuestion(hash)
-  hash["content"].each { |item| puts "#{item['question']}, " }
+  prompt = TTY::Prompt.new
+  menuOptions = []
+  hash['content'].each { |item| menuOptions << item['question'] }
+  menuOptions << 'back'
+  return prompt.select('', menuOptions)
 end
