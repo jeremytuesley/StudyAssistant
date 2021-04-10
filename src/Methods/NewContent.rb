@@ -7,11 +7,11 @@ def createCategory
   puts 'Please enter your category name:'.cyan
   input = STDIN.gets.chomp
   if input.downcase != 'back'
-    if findCategory(input)
+    if findCategory(input) #Checking if category exists
       puts 'That category already exists'.red
       createCategory
     else
-      saveNewCategory({ category: input, content: [] })
+      saveNewCategory({ category: input, content: [] }) #Writes category to file
       puts 'Successfully added new category'.green
     end
   end

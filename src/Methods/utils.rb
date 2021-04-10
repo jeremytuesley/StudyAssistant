@@ -72,7 +72,7 @@ end
 
 # Create new Question set in a category
 # @params: 
-# 1. [String] category name 
+# 1. [String] Category name 
 # 2. [Hash]  question/answer item, e.g. {"question":"how many fish","answer":"2"}
 def createQuestions(categoryName, questionSet)
   dataArray = JSON.parse(File.read(FilePath))
@@ -97,7 +97,7 @@ def deleteQuestions(categoryName, questionSet)
   File.open(FilePath, 'w') { |f| f.write(dataArray.to_json) }
 end
 
-# Display all categorys as a menu option
+# Display all categories as a menu option
 def displayCategory
   prompt = TTY::Prompt.new
   dataArray = JSON.parse(File.read(FilePath))
@@ -118,7 +118,8 @@ def displayQuestion(categoryItem)
   return prompt.select('', menuOptions)
 end
 
-
+# Actual game function
+# Randomizes questions and displays to user
 def sampleQuestion(questionsSet)
   totalQuestions = questionsSet.length() 
   order = 1
@@ -129,8 +130,10 @@ def sampleQuestion(questionsSet)
     puts "Question #{order}/#{totalQuestions}: #{question["question"]}".cyan
     puts "Your answer is:".green
     answer = STDIN.gets.chomp.downcase
+    # Allowing user to back out of game
     if answer.downcase == 'back'
       return false
+      # Checking if answer matches answer in system and giving feedback
     elsif answer == question["answer"].downcase
       puts "Correct!".green
       correct += 1
@@ -139,19 +142,22 @@ def sampleQuestion(questionsSet)
       puts "#{question["answer"]}".green
       incorrect += 1
     end
+    # Beginning next question and removing picked question from the pool
     order += 1
     questionsSet.delete(question)
   end 
   return {totalQuestions: totalQuestions, correct: correct, incorrect: incorrect}
 end
 
+# End of game results, totals how many user got correct vs total number of questions
 def report(result)
   correctResult = result[:correct]
   totalResult = result[:totalQuestions]
-  sum = correctResult/totalResult.to_f * 100
+  sum = correctResult/totalResult.to_f * 100 # Maths to give a percentage
   puts "You got #{correctResult}/#{totalResult}, #{sum}% of questions right!".cyan
+  # Congratulation statements (basically a win/loss)
   if sum >= 70
-    puts "Well done! You're pretty smart.".green
+    puts "Well done! You're pretty smart.".green 
   elsif sum < 70
     puts "Better luck next time".red
   end
