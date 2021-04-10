@@ -31,5 +31,17 @@ To now run the program, in your terminal, please type:
 ./StudyAssistant.sh
 ```
 
+## Dependencies 
 
+StudyAssistant utilises the following gems that are Mac dependent and will not function properly on other operating systems.
+
+The following Ruby Gems are required and are installed with the installation file, as well as in the Gemfile
+
+- gem "colorize", "~> 0.8.1"
+
+- gem "tty-prompt", "~> 0.23.0"
+
+- gem "tty-font", "~> 0.5.0"
+
+- gem "tty-spinner", "~> 0.9.3"
 
