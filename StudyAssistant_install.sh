@@ -9,7 +9,7 @@ touch StudyAssistant.sh
 chmod u+x StudyAssistant.sh
 echo "#!/bin/bash" >> StudyAssistant.sh
 echo "cd src" >> StudyAssistant.sh
-echo "ruby ./src/main.rb" >> StudyAssistant.sh
+echo "ruby main.rb" >> StudyAssistant.sh
 echo "Launching Study Assistant..."
 cd src
 ruby main.rb --help
