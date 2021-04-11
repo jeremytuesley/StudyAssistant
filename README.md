@@ -5,7 +5,7 @@
 - [Instructions on how to use](#Target-Audience-Usage)
 - [Functionality & Features](#Functionality-and-Features)
 - [User Interaction and Experience](#User-interaction-and-experience)  
-- [Control Flow Development](#Control-flow-development)  
+- [Control Flow Diagram](#Control-flow-diagram)  
 - [Implementation Plan](#Implementation-Plan)  
 - [Testing](#Testing)
 - [Help Documentation](#Help-Documentation) 
@@ -15,6 +15,7 @@
 ## Links
 
 * [GitHub Repository](https://github.com/jeremytuesley/StudyAssistant)
+* [Trello Board](https://trello.com/b/UO83etWZ/study-assistant-project-management)
 
 #
 # Software Development Plan
@@ -87,6 +88,10 @@ Once you think you have created a sufficient amount of questions, go back to the
 # 
 
 ## Functionality and Features
+### Trivia Revision Game
+Program asks user if they want to choose a category, get given a random category, or mayhem(all questions).
+Program then prompts user with the questions and the user will answer. <br />
+If chosen random, I've added a little effect to add a little fun and suspense to the game.
 
 ## Features it will have:
 - Creating categories as a hash, able to assign questions to an existing category
@@ -98,9 +103,27 @@ Once you think you have created a sufficient amount of questions, go back to the
 ## Nice to have features:
 - Multiple users, different saved questions, not view other users questions (login, logout)
 - Background music
+Sadly, due to limited time, these features were not implemented in the end.
 
 #
 ## User Interaction and Experience
+
+#
+## Control-flow-diagram
+![ControlFlow](./docs/Control-flow-diagram.png)
+
+#
+## Implementation Plan
+## Made use of Trello Board
+After my pitch was approved, I created my trello board, which has definitely helped with keeping track of what was left to do. In my Trello board, I added what I would want out of the application, (user stories). As a user, I want ... so I can ... <br />
+Then after creating the user stories, I created a backlog of tasks, which was everything I could think of needing to do. I added to these tasks as soon as I found that I needed to do something extra. 
+With this backlog of tasks, I assigned priority to each task as well as an estimated time frame to complete it.<br /> <br /> I planned my days by adding a set of backlogged tasks to my daily-to-do, and then swapped them over to in-progress once I started working on them, then to-be-tested and finally complete. <br /> <br />
+I feel like having done this trello board has immensely helped me out with planning, giving me a clear picture of what was needed to do, and keeping me on track to complete the app before the deadline.
+<br /> Here is a picture of my trello board, albeit mostly completed.
+![Trello Board](./docs/Trello-board.png)
+
+#
+## Testing
 
 #
 ## Help documentation
