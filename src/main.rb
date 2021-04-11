@@ -1,6 +1,6 @@
-require_relative './MenuOptions/play'
-require_relative './MenuOptions/manage'
-require_relative './MenuOptions/instructions'
+require_relative './menu_options/play'
+require_relative './menu_options/manage'
+require_relative './menu_options/instructions'
 require_relative './arguments'
 require 'colorize'
 require 'tty-prompt'
@@ -18,20 +18,20 @@ puts "At any time within the menu options, type 'back' to go back up the previou
 puts ''
 
 until quit
-  menuChoices = [
+  menu_choices = [
     'Play',
     'Instructions',
     'Create/ Manage Questions',
     'Quit',
   ]
-  choice = prompt.select('What would you like to do?', menuChoices)
+  choice = prompt.select('What would you like to do?', menu_choices)
   case (choice)
   when 'Play'
-    gameStart
+    game_start
   when 'Instructions'
     instructions
   when 'Create/ Manage Questions'
-    manageContent
+    manage_content
   when 'Quit'
     puts 'Thanks for playing! Goodbye :)'.cyan
     quit = true

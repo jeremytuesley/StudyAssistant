@@ -1,6 +1,6 @@
-require_relative './MenuOptions/play'
-require_relative './MenuOptions/manage'
-require_relative './MenuOptions/instructions'
+require_relative './menu_options/play'
+require_relative './menu_options/manage'
+require_relative './menu_options/instructions'
 require 'colorize'
 
 if ARGV.include? "--help" # If user includes --help, it will only display instructions and then exit
@@ -37,11 +37,11 @@ end
 end
 
 if ARGV.include? "--play" #If user includes --play, it will take them straight to play instead of main menu
-gameStart
+game_start
 end
 
 if ARGV.include? "--create" #If user includes --create, it will take them straight to the create menu instead of main
-    manageContent
+    manage_content
 end
 
 

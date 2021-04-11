@@ -1,12 +1,12 @@
 # CREATING CATEGORIES QUESTIONS ANSWERS
-require_relative '../Methods/newContent'
+require_relative '../Methods/new_content'
 require_relative '../Methods/utils'
-require_relative '../Methods/updateContent'
+require_relative '../Methods/update_content'
 require 'colorize'
 require 'tty-prompt'
-def manageContent
+def manage_content
   prompt = TTY::Prompt.new
-  menuChoices = [
+  menu_choices = [
     'Create a New Category',
     'Create a New Question',
     'Change a Category Name',
@@ -16,18 +16,18 @@ def manageContent
   ]
   menu = false
   until menu
-    choice = prompt.select('What would you like to do?', menuChoices)
+    choice = prompt.select('What would you like to do?', menu_choices)
     case choice
     when 'Create a New Category'
-      createCategory
+      create_category
     when 'Create a New Question'
-      createQuestion
+      new_question
     when 'Change a Category Name'
-      manageCategory
+      manage_category
     when 'Delete a Question'
-      manageQuestion
+      manage_question
     when 'Delete a Category'
-      removeCategory
+      remove_category
     when 'Back to Main Menu'
       menu = true
     end

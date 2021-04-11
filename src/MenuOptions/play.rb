@@ -4,8 +4,8 @@ require 'tty-prompt'
 require_relative '../Methods/game'
 require_relative '../Methods/utils'
 
-def gameStart
-  menuChoices = [
+def game_start
+  menu_choices = [
     'Choose a Category',
     'Random Category',
     'Mayhem(ALL Questions)',
@@ -14,14 +14,14 @@ def gameStart
   prompt = TTY::Prompt.new
   menu = false
   until menu
-    choice = prompt.select('What would you like to do?', menuChoices)
+    choice = prompt.select('What would you like to do?', menu_choices)
     case choice
     when 'Choose a Category'
-      categoryPlay
+      category_play
     when 'Random Category'
-      randomPlay
+      random_play
     when 'Mayhem(ALL Questions)'
-      mayhemPlay
+      mayhem_play
     when 'Back to Menu'
       menu = true
     end

@@ -2,22 +2,22 @@ require 'tty-spinner'
 require 'colorize'
 require_relative '../Methods/utils'
 
-def categoryPlay 
+def category_play 
  #Choosing a category which program will pull questions from
   puts 'Please choose a category'.cyan
-  choice = displayCategory
+  choice = display_category
   if choice != 'Back to Menu'
-    category = findCategory(choice)
+    category = find_category(choice)
     # Start of game
-    result = sampleQuestion(category["content"])
+    result = sample_question(category["content"])
     report(result) if result #Correct or incorrect feedback
   end
 end
 
-def randomPlay 
+def random_play 
   # Chooses to let the program to give a random category to user, pulls questions from that category
-  dataArray = JSON.parse(File.read(FilePath))
-  category = dataArray.sample
+  data_array = JSON.parse(File.read(File_path))
+  category = data_array.sample
 
   # Animation UI for random category
   puts 'Randomly picking a category for you'.cyan
@@ -27,18 +27,18 @@ def randomPlay
   spinner.stop("#{category['category']}!")
 
   # Start game
-  result = sampleQuestion(category["content"])
+  result = sample_question(category["content"])
   report(result) if result #Correct or incorrect feedback
 end
 
-def mayhemPlay 
+def mayhem_play 
   # Ignores categories and gives out all the questions
-  dataArray = JSON.parse(File.read(FilePath))
-  allQuestinos = []
-  dataArray.each do |item|
-    allQuestinos.concat item['content']
+  data_array = JSON.parse(File.read(File_path))
+  all_questions = []
+  data_array.each do |item|
+    all_questions.concat item['content']
   end
   #Start of Game
-  result = sampleQuestion(allQuestinos)
+  result = sample_question(all_questions)
   report(result) if result #Correct or incorrect feedback
 end
