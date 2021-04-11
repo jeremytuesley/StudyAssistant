@@ -3,7 +3,6 @@ require 'colorize'
 require 'tty-prompt'
 require_relative '../Methods/game'
 require_relative '../Methods/utils'
-
 def game_start
   menu_choices = [
     'Choose a Category',
@@ -17,11 +16,26 @@ def game_start
     choice = prompt.select('What would you like to do?', menu_choices)
     case choice
     when 'Choose a Category'
+      begin
       category_play
+      rescue
+        relating_to = "Choosing a category"
+        error_message(relating_to)
+      end
     when 'Random Category'
+      begin
       random_play
+      rescue
+        relating_to = "Random Category Play Options"
+        error_message(relating_to)
+      end
     when 'Mayhem(ALL Questions)'
+      begin
       mayhem_play
+      rescue
+        relating_to = "Mayhem Play Option"
+        error_message(relating_to)
+      end
     when 'Back to Menu'
       menu = true
     end

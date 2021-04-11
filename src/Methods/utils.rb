@@ -117,3 +117,9 @@ def display_question(category_item)
   menu_options << 'back'
   return prompt.select('', menu_options)
 end
+
+def error_message(relating_to)
+  puts "An error occured when trying to access:".red
+  puts relating_to
+  puts "Please ensure you have all the files from the repositry".red
+end

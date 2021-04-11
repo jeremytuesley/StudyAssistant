@@ -9,6 +9,7 @@ prompt = TTY::Prompt.new
 font = TTY::Font.new(:starwars)
 pastel = Pastel.new
 
+begin
 quit = false
 puts pastel.green(font.write("Welcome to"))
 puts pastel.green(font.write("Study"))
@@ -27,13 +28,33 @@ until quit
   choice = prompt.select('What would you like to do?', menu_choices)
   case (choice)
   when 'Play'
-    game_start
+    begin
+      game_start
+    rescue
+      relating_to = "Play Menu"
+      error_message(relating_to)
+    end
   when 'Instructions'
-    instructions
+    begin
+      instructions
+    rescue
+      relating_to = "Instructions"
+      error_message(relating_to)
+    end
   when 'Create/ Manage Questions'
+    begin
     manage_content
+    rescue
+      relating_to = "Create/ Manage Menu"
+      error_message(relating_to)
+    end
   when 'Quit'
     puts 'Thanks for playing! Goodbye :)'.cyan
     quit = true
   end
+end
+rescue
+  puts "An error occured trying to run the application"
+  puts "Please ensure you have followed installation instructions correctly"
+  puts "If you have, ensure you have all the files from the repositry"
 end
