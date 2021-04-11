@@ -13,3 +13,5 @@ gem "tty-prompt", "~> 0.23.0"
 gem "tty-font", "~> 0.5.0"
 
 gem "tty-spinner", "~> 0.9.3"
+
+gem "test-unit", "~> 3.4"

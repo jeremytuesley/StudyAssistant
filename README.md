@@ -200,3 +200,4 @@ The following Ruby Gems are required and are installed with the installation fil
 
 - gem "tty-spinner", "~> 0.9.3"
 
+- gem "test-unit", "~> 3.4"
