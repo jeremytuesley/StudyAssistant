@@ -32,7 +32,8 @@ def new_question
         back = true
       else
         # checking if question already exists
-        if find_question(category['content'], ques_input)
+        category_set = find_category(category)
+        if find_question(category_set['content'], ques_input)
           puts 'That question already exists'.red
         else
           # Create question
