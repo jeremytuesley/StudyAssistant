@@ -12,7 +12,7 @@ require 'test-unit'
 # puts data_array
 # end
 
-# Function to test if you are able to create and delete questions, essentially reading and writing to file
+# Functions to test if you are able to create and delete questions, essentially reading and writing to file
 class JsonTests < Test::Unit::TestCase
 def test_read
   data_array = JSON.parse(File.read(File_path))
@@ -21,22 +21,23 @@ end
 
 def test_create_category
   save_new_category({ category: 'test_category_name', content: [] })
-test_category_exists = find_category('test_category_name')
+  test_category_exists = find_category('test_category_name') # Iterates and returns value of category in file
   assert_equal({"category"=>"test_category_name", "content"=>[]}, test_category_exists)
 end
 
 def test_create_question
-category_set = find_category('test_category_name') #Reads and pulls category name from json file
-question_set = { question: 'ques_test', answer: 'ans_test' }
-create_question(category_set, question_set) #Writes to json file
-test_question_exists = find_question(category_set['content'], 'ques_test')
+  category_set = find_category('test_category_name') #Reads and pulls category name from json file
+  question_set = { question: 'ques_test', answer: 'ans_test' }
+  create_question(category_set, question_set) #Writes to json file
+  test_question_exists = find_question(category_set['content'], 'ques_test')
 # Returns false if question exists, as this checks if question name is available or not
-assert_equal(false, test_question_exists)
+  assert_equal(false, test_question_exists)
 end
 
 def test_delete_category
 delete_category('test_category_name')
 test_delete_category = find_category('test_category_name')
+# Will return false, as this checks if category exists
 assert_equal(false, test_delete_category)
 end
 end

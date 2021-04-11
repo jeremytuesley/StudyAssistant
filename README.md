@@ -151,7 +151,45 @@ I feel like having done this trello board has immensely helped me out with plann
 
 #
 ## Testing
+The JSON file is a huge part of my app, without it, the application would essentially be empty.
+Using the test-unit gem, allows for a more accurate description and ensures the features are working correctly. <br />
+I've written 4 tests to make sure everything is working in regards to it. The four tests are as follows:
 
+- If you can read from the json
+```Ruby
+def test_read
+  data_array = JSON.parse(File.read(File_path))
+  assert_not_nil(data_array)
+end
+```
+- If you are able to create a category
+```Ruby
+def test_create_category
+  save_new_category({ category: 'test_category_name', content: [] })
+  test_category_exists = find_category('test_category_name') # Iterates and returns value of category in file
+  assert_equal({"category"=>"test_category_name", "content"=>[]}, test_category_exists)
+end
+```
+- If you are able to create a question/ answer and assign it to a category
+```Ruby
+def test_create_question
+  category_set = find_category('test_category_name') # Reads and pulls category name from json file
+  question_set = { question: 'ques_test', answer: 'ans_test' }
+  create_question(category_set, question_set) # Writes to json file
+  test_question_exists = find_question(category_set['content'], 'ques_test')
+# Returns false if question exists, as this checks if question name is available or not
+  assert_equal(false, test_question_exists)
+end
+``` 
+- If you are able to delete the created category
+```Ruby
+def test_delete_category
+delete_category('test_category_name')
+test_delete_category = find_category('test_category_name') 
+# Will return false, as this checks if category exists
+assert_equal(false, test_delete_category)
+end
+```
 #
 ## Help documentation
 
