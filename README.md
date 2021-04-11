@@ -148,6 +148,8 @@ With this backlog of tasks, I assigned priority to each task as well as an estim
 I feel like having done this trello board has immensely helped me out with planning, giving me a clear picture of what was needed to do, and keeping me on track to complete the app before the deadline.
 <br /> Here is a picture of my trello board, albeit mostly completed.
 ![Trello Board](./docs/Trello-board.png)
+* [Trello Board Link](https://trello.com/b/UO83etWZ/study-assistant-project-management)
+
 
 #
 ## Testing
