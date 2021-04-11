@@ -107,6 +107,33 @@ Sadly, due to limited time, these features were not implemented in the end.
 
 #
 ## User Interaction and Experience
+## (Screenshots Follow After Text)
+<br />
+
+### Welcome Message and Main Menu
+When you first load the app, you are greeted with a welcome message and displayed the main menu, when going back to the main menu, the welcome message is not displayed again. This is stylized with gems. <br /> <br />
+![Welcome](./docs/Game_Screenshots/app_start.png)
+### Instructions Screen
+When you choose instructions from the main menu, a quick how to play the game is displayed and a prompt to type 'back' to go back to the main menu <br /> <br />
+![Instructions](./docs/Game_Screenshots/instructions.png)
+### Play Menu
+When you choose play menu, you can choose from the options to choose a category, random category or mayhem. <br />
+This adds a little fun to the game, the random choice has a little effect, to add some suspense and excitement. Mayhem is all questions without specifying a category. <br /> <br />
+![Play Menu](./docs/Game_Screenshots/play_option.png)
+### Correct Feedback
+When you answer a question correctly, the game records this for the end result, and displays a green correct message. <br /> <br />
+![Correct Feedback](./docs/Game_Screenshots/correct_feedback.png)
+### Incorrect Feedback and End of Game extra feedback
+When you answer a question incorrectly, the game records this for the end result, displays a red error message and what the correct answer was. <br /> <br />
+At the end of the game, it sums up your correct answers vs incorrect answers, gives you a percentage and a fraction. Then displays the questions you got wrong and what the answer should have been. <br /> <br />
+![Incorrect Feedback](./docs/Game_Screenshots/end_of_game.png)
+### Create Menu
+When you choose the Create/ Manage questions option from the main menu, this menu displays.
+This is where you will create, delete, update questions, answers, and categories. <br /> <br />
+![Create Menu](./docs/Game_Screenshots/create_menu.png)
+### Assignment of questions
+When creating a question, the user has to choose an existing category to assign the question to <br /> <br />
+![Assignment of Questions](./docs/Game_Screenshots/assign_category.png)
 
 #
 ## Control-flow-diagram
