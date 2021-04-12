@@ -67,7 +67,7 @@ If chosen Quit:
 If chosen Instructions
 - Application displays instructions on how to play the game, and what to do
 - Shows some warnings
-- 
+- Type 'back' to go back to the menu
 
 If chosen Play:
 - Program will display another menu for user to select
